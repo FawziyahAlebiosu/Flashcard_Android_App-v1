@@ -2,8 +2,10 @@ package com.example.android.flashcard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,6 +73,32 @@ public class MainActivity extends AppCompatActivity {
         String answerOne = getString(R.string.answerOne);
 
 
+        findViewById(R.id.plusbtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //create intent to link add button to next activity
+                Intent intent = new Intent(MainActivity.this, addCardActivity.class);
+                //we need to specify when going to this activity, that we want something back(the question and answer)
+                MainActivity.this.startActivityForResult(intent, 100);
+
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            //which it will be because we made it that in the method above
+            String string1 = data.getExtras().getString("string1");
+            //again it should match the key we defined in the other method
+            String string2 = data.getExtras().getString("string2");
+            //now send those answers to the text views
+            ((TextView)findViewById(R.id.flashcard_question)).setText(string1);
+            ((TextView)findViewById(R.id.flashcard_answer)).setText(string2);
+        }
+
     }
 }
+
 

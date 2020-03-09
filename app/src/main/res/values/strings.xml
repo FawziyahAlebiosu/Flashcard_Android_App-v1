@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Flashcard</string>
-    <string name="questionOne"> Who is the 44th president of the United States?</string>
-    <string name="answerOne">Barack Obama</string>
-    <string name= "optionOne">Bill Clinton</string>
-    <string name = "optionTwo">Michelle Obama</string>
+    <string name="questionOne"> Your question goes here?</string>
+    <string name="answerOne">Answer one</string>
+    <string name="optionOne">Answer two</string>
+    <string name="optionTwo">Answer three</string>
+    <string name = "explanation">Add your card below</string>
 
 </resources>

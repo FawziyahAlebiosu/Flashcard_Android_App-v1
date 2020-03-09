@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="-500dp"
+    tools:context=".addCardActivity">
+
+    <TextView
+        android:id="@+id/explains"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/explanation"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:layout_marginBottom="20dp"/>
+
+    <EditText
+        android:id="@+id/enterQuestion"
+        android:hint="Enter the question here"
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/explains"
+        android:textAlignment="center"
+        android:layout_marginBottom="20dp"/>
+    <EditText
+        android:id="@+id/enterAnswer"
+        android:hint="Enter the answer to the question here"
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/enterQuestion"
+        android:textAlignment="center"
+        android:layout_marginBottom="150dp"/>
+
+    <ImageView
+        android:id="@+id/save"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/enterAnswer"
+        android:layout_marginTop="62dp"
+        android:layout_weight="1"
+        android:src="@drawable/save" />
+
+    <ImageView
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/enterAnswer"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="84dp"
+        android:layout_toRightOf="@id/save"
+        android:src="@drawable/cancel" />
+</android.widget.RelativeLayout>
