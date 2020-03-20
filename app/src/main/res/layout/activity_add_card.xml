@@ -31,27 +31,49 @@
         android:hint="Enter the answer to the question here"
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_below="@id/enterQuestion"
         android:textAlignment="center"
-        android:layout_marginBottom="150dp"/>
+        android:layout_marginBottom="20dp"/>
+
+    <EditText
+        android:id="@+id/choiceOne"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/enterAnswer"
+        android:layout_marginTop="-3dp"
+        android:layout_marginBottom="20dp"
+        android:hint="Enter a multiple choice text here"
+        android:inputType="textMultiLine"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/choiceTwo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/choiceOne"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="20dp"
+        android:hint="Enter a multiple choice text here"
+        android:inputType="textMultiLine"
+        android:textAlignment="center" />
 
     <ImageView
         android:id="@+id/save"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@id/enterAnswer"
-        android:layout_marginTop="62dp"
+        android:layout_width="96dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/choiceTwo"
+        android:layout_marginTop="171dp"
         android:layout_weight="1"
         android:src="@drawable/save" />
 
     <ImageView
         android:id="@+id/cancel"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@id/enterAnswer"
-        android:layout_marginLeft="210dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="57dp"
+        android:layout_height="62dp"
+        android:layout_below="@id/choiceTwo"
+        android:layout_marginLeft="201dp"
+        android:layout_marginTop="175dp"
         android:layout_toRightOf="@id/save"
         android:src="@drawable/cancel" />
 </android.widget.RelativeLayout>

@@ -41,25 +41,37 @@
         android:textAlignment="center"
         android:textSize="30sp"
         android:layout_marginBottom="10dp"/>
+
     <TextView
         android:id="@+id/flashcard_answer"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/optionTwo"
-        android:textColor="#000000"
-        android:text="@string/answerOne"
+        android:layout_marginTop="9dp"
         android:background="#D9E650"
+        android:text="@string/answerOne"
         android:textAlignment="center"
-        android:textSize="30sp"/>
+        android:textColor="#000000"
+        android:textSize="30sp" />
 
     <ImageView
         android:id="@+id/plusbtn"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_below="@id/flashcard_answer"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="155dp"
         android:src="@drawable/plusbttn"
         android:contentDescription="addItem" />
+
+
+    <ImageView
+        android:id="@+id/nextbtn"
+        android:layout_width="match_parent"
+        android:layout_height="117dp"
+        android:layout_below="@id/optionTwo"
+        android:layout_marginTop="86dp"
+        android:foregroundGravity="center"
+        android:src="@drawable/nextbtn" />
 
     <TextView
         android:id="@+id/answer_side"
@@ -74,5 +86,14 @@
         android:textSize="40sp"
         android:visibility="invisible"/>
 
+    <ImageView
+        android:id="@+id/editbtn"
+        android:layout_width="match_parent"
+        android:layout_height="151dp"
+        android:layout_below="@id/flashcard_answer"
+        android:layout_marginTop="121dp"
+        android:contentDescription="edit item"
+        android:src="@drawable/editbtn"
+        android:visibility="invisible" />
 
 </android.widget.RelativeLayout>
