@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     List<Flashcard> allFlashcards;
 
     int currentCardDisplayedIndex = 0;
+    //variable to keep track for editing purpose
+    Flashcard cardToEdit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +27,15 @@ public class MainActivity extends AppCompatActivity {
         allFlashcards = flashcardDatabase.getAllCards();
 
         if (allFlashcards != null && allFlashcards.size() > 0) {
-            //if our deck of saved cards has at least one card, then call the card
+            //if our deck of saved cards has at least one card, then present/display the first saved card in the deck
 
             ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(0).getQuestion());
-            ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(0).getAnswer()); }
-        //android studio wil complain if block of code is not inside oncreate method
+            ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(0).getAnswer());
+            ((TextView) findViewById(R.id.optionOne)).setText(allFlashcards.get(0).getWrongAnswer1());
+            ((TextView) findViewById(R.id.optionTwo)).setText(allFlashcards.get(0).getWrongAnswer2());
+            ((TextView) findViewById(R.id.answer_side)).setText(allFlashcards.get(0).getAnswer());
+        }
+
         findViewById(R.id.flashcard_answer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,12 +66,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 findViewById(R.id.flashcard_question).setVisibility(View.INVISIBLE);
-                //then make answer card visible
+        //then make answer card visible
                 findViewById(R.id.answer_side).setVisibility((View.VISIBLE));
-                //then make the other two options invisible as well
+        //then make the other two options invisible as well
                 findViewById(R.id.optionTwo).setVisibility(View.INVISIBLE);
                 findViewById(R.id.optionOne).setVisibility(View.INVISIBLE);
                 findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
+        //then make next button invisible as well
+                findViewById(R.id.nextbtn).setVisibility(View.INVISIBLE);
             }
         });
 
@@ -74,19 +82,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
-                //then make answer card visible
+            //then make answer card visible
                 findViewById(R.id.answer_side).setVisibility((View.INVISIBLE));
-                //then make the other two options invisible as well
+            //then make the other two options invisible as well
                 findViewById(R.id.optionTwo).setVisibility(View.VISIBLE);
                 findViewById(R.id.optionOne).setVisibility(View.VISIBLE);
                 findViewById(R.id.flashcard_answer).setVisibility(View.VISIBLE);
+                findViewById(R.id.nextbtn).setVisibility(View.VISIBLE);
             }
         });
-
-
-        String questionOne = getString(R.string.questionOne);
-        String answerOne = getString(R.string.answerOne);
-
 
         findViewById(R.id.plusbtn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,14 +102,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
         //create on click listener for when edit button is clicked, grab the currently displayed question and answer strings,
         //then pass them to addcard activity to be populated inside of editText
         findViewById(R.id.editbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 //button is clicked, grab the question inside of textView
                 Intent intent = new Intent(MainActivity.this, addCardActivity.class);
-                //create intent to link edit button to addcard activity
+
+                //create intent to link edit button to add card activity
+
                 TextView answer = findViewById(R.id.flashcard_answer);
                 String editAnswer = answer.getText().toString();
 
@@ -123,11 +131,12 @@ public class MainActivity extends AppCompatActivity {
                 
                 intent.putExtra("stringKey4",editChoice2);
 
-
-
                 MainActivity.this.startActivityForResult(intent, 100);
+
+
             }
         });
+
         findViewById(R.id.nextbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,16 +146,50 @@ public class MainActivity extends AppCompatActivity {
                 // make sure we don't get an IndexOutOfBoundsError if we are viewing the last indexed card in our list
                 if (currentCardDisplayedIndex > allFlashcards.size() - 1) {
                     currentCardDisplayedIndex = 0;
+
                 }
 
                 // set the question and answer TextViews with data from the database
                 ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
                 ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
                 ((TextView) findViewById(R.id.answer_side)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
-                findViewById(R.id.answer_side).setVisibility((View.INVISIBLE));
-                findViewById(R.id.flashcard_question).setVisibility((View.VISIBLE));
+                ((TextView) findViewById(R.id.optionOne)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer1());
+                ((TextView) findViewById(R.id.optionTwo)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer2());
+                    //make green and red dissappear
+
+                findViewById(R.id.flashcard_answer).setBackgroundColor(getResources().getColor(R.color.regular));
+                findViewById(R.id.optionTwo).setBackgroundColor(getResources().getColor(R.color.regular));
+                findViewById(R.id.optionOne).setBackgroundColor(getResources().getColor(R.color.regular));
             }
         });
+        findViewById(R.id.deletebtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //when deletebtn is clicked on, delete current question
+                flashcardDatabase.deleteCard(((TextView) findViewById(R.id.flashcard_question)).getText().toString());
+                //delete current answer
+                flashcardDatabase.deleteCard(((TextView) findViewById(R.id.flashcard_answer)).getText().toString());
+                //delete current multiple choice option one
+                flashcardDatabase.deleteCard(((TextView) findViewById(R.id.optionOne)).getText().toString());
+                //delete option two
+                flashcardDatabase.deleteCard(((TextView) findViewById(R.id.optionTwo)).getText().toString());
+                //delete the answer side as well
+                flashcardDatabase.deleteCard(((TextView) findViewById(R.id.answer_side)).getText().toString());
+
+                //now update our list of cards in the deck
+                allFlashcards = flashcardDatabase.getAllCards();
+                //currentCardDisplayedIndex-=1;
+
+                //display snackbar telling user it was successful
+                Snackbar.make(findViewById(R.id.flashcard_question),
+                        "Card deleted successfully",
+                        Snackbar.LENGTH_LONG)
+                        .show();
+
+            }
+        });
+        String questionOne = getString(R.string.questionOne);
+        String answerOne = getString(R.string.answerOne);
     }
 
 
@@ -167,14 +210,12 @@ public class MainActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.optionTwo)).setText(string4);
             //displays card was created successfully
             Snackbar.make(findViewById(R.id.flashcard_question),
-                    "Card created successfully",
+                    "Card added successfully",
                     Snackbar.LENGTH_LONG)
                     .show();
             findViewById(R.id.editbtn).setVisibility(View.VISIBLE);
 
-            flashcardDatabase.insertCard(new Flashcard(string1, string2));
-            allFlashcards = flashcardDatabase.getAllCards();
-
+            flashcardDatabase.insertCard(new Flashcard(string1, string2, string3, string4));
         }
         }
 
