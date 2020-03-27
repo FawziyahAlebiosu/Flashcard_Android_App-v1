@@ -2,9 +2,13 @@ package com.example.android.flashcard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -19,12 +23,16 @@ public class MainActivity extends AppCompatActivity {
     int currentCardDisplayedIndex = 0;
     //variable to keep track for editing purpose
     Flashcard cardToEdit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         flashcardDatabase = new FlashcardDatabase(getApplicationContext());
         allFlashcards = flashcardDatabase.getAllCards();
+
+        final Animation leftOutAnim = AnimationUtils.loadAnimation(this, R.anim.enter_right);
+        final Animation rightInAnim = AnimationUtils.loadAnimation(this, R.anim.exit_left);
 
         if (allFlashcards != null && allFlashcards.size() > 0) {
             //if our deck of saved cards has at least one card, then present/display the first saved card in the deck
@@ -65,7 +73,17 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.flashcard_question).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                View answerSideView = findViewById(R.id.flashcard_answer);
+                //get center for clipping circle
+                int cx = answerSideView.getWidth()/2;
+                int cy = answerSideView.getHeight() / 2;
+                //get final radius for clipping animation
+                float finalRadius = (float) Math.hypot(cx, cy);
+                //create animator for this view
+                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
+
                 findViewById(R.id.flashcard_question).setVisibility(View.INVISIBLE);
+
         //then make answer card visible
                 findViewById(R.id.answer_side).setVisibility((View.VISIBLE));
         //then make the other two options invisible as well
@@ -74,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
         //then make next button invisible as well
                 findViewById(R.id.nextbtn).setVisibility(View.INVISIBLE);
+                anim.setDuration(5000);
+                anim.start();
             }
         });
 
@@ -95,10 +115,16 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.plusbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Intent i = new Intent(MainActivity.this, addCardActivity.class);
+
+
                 //create intent to link add button to next activity
                 Intent intent = new Intent(MainActivity.this, addCardActivity.class);
                 //we need to specify when going to this activity, that we want something back(the question and answer)
+
                 MainActivity.this.startActivityForResult(intent, 100);
+                overridePendingTransition(R.anim.enter_right, R.anim.exit_left);
+
 
             }
         });
@@ -149,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+
                 // set the question and answer TextViews with data from the database
                 ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
                 ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
@@ -160,6 +187,34 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.flashcard_answer).setBackgroundColor(getResources().getColor(R.color.regular));
                 findViewById(R.id.optionTwo).setBackgroundColor(getResources().getColor(R.color.regular));
                 findViewById(R.id.optionOne).setBackgroundColor(getResources().getColor(R.color.regular));
+                //listeners for animations
+                leftOutAnim.setAnimationListener(new Animation.AnimationListener() {
+
+
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        //this emthod is called when the animation first starts
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        //called when animation finishes
+
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                        //no need to worry about this
+                    }
+
+                });
+                findViewById(R.id.flashcard_question).startAnimation(leftOutAnim);
+                findViewById(R.id.optionOne).startAnimation(leftOutAnim);
+                findViewById(R.id.optionTwo).startAnimation(leftOutAnim);
+
+
+                findViewById(R.id.flashcard_answer).startAnimation(leftOutAnim);
             }
         });
         findViewById(R.id.deletebtn).setOnClickListener(new View.OnClickListener() {
