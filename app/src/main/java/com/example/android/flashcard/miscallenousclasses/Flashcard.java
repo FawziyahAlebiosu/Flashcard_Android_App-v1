@@ -1,4 +1,4 @@
-package com.example.android.flashcard;
+package com.example.android.flashcard.miscallenousclasses;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -22,7 +22,7 @@ public class Flashcard {
         this.answer = answer;
     }
 
-    Flashcard(String question, String answer, String wrongAnswer1, String wrongAnswer2) {
+    public Flashcard(String question, String answer, String wrongAnswer1, String wrongAnswer2) {
         this.uuid = UUID.randomUUID().toString();
         this.question = question;
         this.answer = answer;

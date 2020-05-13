@@ -1,7 +1,10 @@
-package com.example.android.flashcard;
+package com.example.android.flashcard.interfaces;
 
 import androidx.room.Room;
 import android.content.Context;
+
+import com.example.android.flashcard.miscallenousclasses.Flashcard;
+import com.example.android.flashcard.databases.AppDatabase;
 
 import java.util.List;
 
@@ -10,7 +13,7 @@ import java.util.List;
 public class FlashcardDatabase {
     private final AppDatabase db;
 
-    FlashcardDatabase(Context context) {
+    public FlashcardDatabase(Context context) {
         db = Room.databaseBuilder(context.getApplicationContext(),
                 AppDatabase.class, "flashcard-database")
                 .allowMainThreadQueries()

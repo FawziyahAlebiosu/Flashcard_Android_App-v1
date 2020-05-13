@@ -1,4 +1,4 @@
-package com.example.android.flashcard;
+package com.example.android.flashcard.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.android.flashcard.R;
 
 public class addCardActivity extends AppCompatActivity {
 
@@ -19,7 +21,7 @@ public class addCardActivity extends AppCompatActivity {
         findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //create intent to dismiss this activity
+                //
                 finish();
             }
         });

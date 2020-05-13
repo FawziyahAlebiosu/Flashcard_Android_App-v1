@@ -1,4 +1,7 @@
-package com.example.android.flashcard;
+package com.example.android.flashcard.databases;
+
+import com.example.android.flashcard.miscallenousclasses.Flashcard;
+import com.example.android.flashcard.interfaces.FlashcardDao;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

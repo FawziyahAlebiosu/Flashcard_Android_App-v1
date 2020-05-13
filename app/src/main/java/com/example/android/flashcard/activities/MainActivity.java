@@ -1,4 +1,4 @@
-package com.example.android.flashcard;
+package com.example.android.flashcard.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.example.android.flashcard.miscallenousclasses.Flashcard;
+import com.example.android.flashcard.interfaces.FlashcardDatabase;
+import com.example.android.flashcard.R;
 import com.google.android.material.snackbar.Snackbar;
 
 

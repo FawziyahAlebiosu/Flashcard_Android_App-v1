@@ -9,8 +9,8 @@
         android:roundIcon="@drawable/ic_iconflashcard"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addCardActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.addCardActivity"></activity>
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

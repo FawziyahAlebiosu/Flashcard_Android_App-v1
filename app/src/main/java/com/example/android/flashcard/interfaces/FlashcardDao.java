@@ -1,4 +1,6 @@
-package com.example.android.flashcard;
+package com.example.android.flashcard.interfaces;
+
+import com.example.android.flashcard.miscallenousclasses.Flashcard;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
