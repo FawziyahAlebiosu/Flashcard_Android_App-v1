@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+//my build file for adding config options that will be applicable to all modules in this application
+
 android {
     compileSdkVersion 28
     defaultConfig {
