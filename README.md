@@ -4,8 +4,9 @@
 ### App Description
 Flashcard app---- i think I will publish it under the name Quizer
 
-### App Walk-though
+### App Walk-thoughs
 <img src = "https://i.imgur.com/38qxA1x.gif" width=200><br>
+<img src = "https://i.imgur.com/E9jYSA6.gif" width = 200><br>
 ## This version currently has:
 - [x] User sees a transition animation when going from the main screen to the add card screen.
 - [x] User sees a reveal animation when the flashcard is tapped and the answer is shown
@@ -13,7 +14,7 @@ Flashcard app---- i think I will publish it under the name Quizer
 
 ## Features coming soon:
 - [ ] Flashcards are shown in random order instead of the order they were created in
-- [ ] Extra styling is added!
+- [ ] Extra styling!
 - [ ] User sees a countdown timer for each question
 - [ ] User sees a 'card flip' animation when the card is tapped
 - [ ] User sees a celebration animation with confetti when they answer a question correctly
