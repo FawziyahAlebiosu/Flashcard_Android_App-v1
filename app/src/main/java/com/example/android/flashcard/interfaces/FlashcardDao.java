@@ -11,6 +11,9 @@ import androidx.room.Update;
 import java.util.List;
 
 @Dao
+/*
+This interface lets me perform SQL queries using the following methods
+ */
 public interface FlashcardDao {
     @Query("SELECT * FROM flashcard")
     List<Flashcard> getAll();

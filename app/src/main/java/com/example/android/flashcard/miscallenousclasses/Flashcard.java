@@ -7,11 +7,13 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import java.util.UUID;
 
 import androidx.room.ColumnInfo;
-
+/*
+This class defines the objects that will be put inside the database. It also creates a column
+inside the database for every field I create.
+ */
 @Entity
 public class Flashcard {
 

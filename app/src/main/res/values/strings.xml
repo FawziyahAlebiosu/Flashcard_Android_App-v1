@@ -5,5 +5,8 @@
     <string name="optionOne">Answer two</string>
     <string name="optionTwo">Answer three</string>
     <string name = "explanation">Add your card below</string>
+    <string name = "input_cannot_be_space">Question and answer cannot be blank</string>
+    <string name = "success_delete">Card deleted successfully</string>
+    <string name="added_success">Card added successfully</string>
 
 </resources>

@@ -1,14 +1,14 @@
-package com.example.android.flashcard.interfaces;
+package com.example.android.flashcard.databases;
 
 import androidx.room.Room;
 import android.content.Context;
-
 import com.example.android.flashcard.miscallenousclasses.Flashcard;
 import com.example.android.flashcard.databases.AppDatabase;
-
 import java.util.List;
 
-
+/*
+this class defines the methods that our database will use, and some other helper methods
+ */
 
 public class FlashcardDatabase {
     private final AppDatabase db;
@@ -28,7 +28,6 @@ public class FlashcardDatabase {
     public void insertCard(Flashcard flashcard) {
         db.flashcardDao().insertAll(flashcard);
     }
-
     public void deleteCard(String flashcardQuestion) {
         List<Flashcard> allCards = db.flashcardDao().getAll();
         for (Flashcard f : allCards) {
