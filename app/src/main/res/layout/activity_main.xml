@@ -8,105 +8,121 @@
 
     <TextView
         android:id="@+id/flashcard_question"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="250dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/card_background"
         android:elevation="7dp"
         android:gravity="center"
         android:text="@string/questionOne"
         android:textColor="#000000"
-        android:textSize="40sp" />
+        android:textSize="45sp" />
+
 
     <TextView
         android:id="@+id/optionOne"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_below="@id/flashcard_question"
-        android:background="#D9E650"
+        android:layout_marginTop="41dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/answer_background"
         android:text="@string/optionOne"
-        android:textColor="#000000"
-        android:textSize="30sp"
         android:textAlignment="center"
-        android:layout_marginBottom="10dp"/>
+        android:textColor="@color/black"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/optionTwo"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_below="@id/optionOne"
-        android:background="#D9E650"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/answer_background"
         android:text="@string/optionTwo"
-        android:textColor="#000000"
         android:textAlignment="center"
-        android:textSize="30sp"
-        android:layout_marginBottom="10dp"/>
+        android:textColor="#000000"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/flashcard_answer"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_below="@id/optionTwo"
-        android:layout_marginTop="9dp"
-        android:background="#D9E650"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/answer_background"
+        android:layout_marginLeft="20dp"
         android:text="@string/answerOne"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="30sp" />
 
-
     <ImageView
         android:id="@+id/plusbtn"
-        android:layout_width="549dp"
-        android:layout_height="80dp"
+        android:layout_width="239dp"
+        android:layout_height="131dp"
         android:layout_below="@id/flashcard_answer"
-        android:layout_marginLeft="-200dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="39dp"
+
         android:contentDescription="addItem"
         android:src="@drawable/plusbttn" />
 
     <ImageView
         android:id="@+id/nextbtn"
-        android:layout_width="110dp"
-        android:layout_height="59dp"
-        android:layout_below="@id/optionTwo"
-        android:layout_marginLeft="250dp"
-        android:layout_marginTop="103dp"
-        android:foregroundGravity="center"
+        android:layout_width="80dp"
+        android:layout_height="300dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/optionTwo"
+        android:layout_below="@id/flashcard_question"
         android:src="@drawable/nextbtn" />
 
     <TextView
         android:id="@+id/answer_side"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="250dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/card_background"
         android:elevation="7dp"
         android:gravity="center"
         android:text="@string/answerOne"
         android:textColor="@color/red"
         android:textSize="40sp"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/editbtn"
         android:layout_width="139dp"
-        android:layout_height="107dp"
+        android:layout_height="120dp"
         android:layout_below="@id/flashcard_answer"
-        android:layout_marginLeft="-113dp"
-        android:layout_marginTop="122dp"
-        android:layout_toRightOf="@id/plusbtn"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="-130dp"
+        android:layout_marginRight="200dp"
+        android:layout_toLeftOf="@id/plusbtn"
         android:contentDescription="edit item"
         android:src="@drawable/editbtn"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/deletebtn"
-        android:layout_width="324dp"
-        android:layout_height="35dp"
+        android:layout_width="365dp"
+        android:layout_height="106dp"
         android:layout_below="@id/flashcard_answer"
         android:layout_marginLeft="-100dp"
-        android:layout_marginTop="46dp"
-        android:src="@drawable/deletebtn" />
+        android:layout_marginTop="37dp"
+        android:src="@drawable/deletebtn"
+        android:visibility="invisible" />
+
+   -->
 
 </android.widget.RelativeLayout>

@@ -9,9 +9,13 @@
 
     <TextView
         android:id="@+id/explains"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="400dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/explanation"
+        android:background="@drawable/card_background"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textAlignment="center"
