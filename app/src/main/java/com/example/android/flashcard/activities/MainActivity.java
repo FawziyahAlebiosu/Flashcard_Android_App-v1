@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
         update list of cards in deck
         display snack bar saying it was successful
          */
-        findViewById(R.id.deletebtn).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
