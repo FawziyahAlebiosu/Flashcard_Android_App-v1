@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     FlashcardDatabase flashcardDatabase;
     List<Flashcard> allFlashcards;
     int currentCardDisplayedIndex = 0;
-    Flashcard cardToEdit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
 
                 TextView choice = findViewById(R.id.optionOne);
                 String editChoice1 = choice.getText().toString();
-
                 TextView choice2 = findViewById(R.id.optionTwo);
                 String editChoice2 = choice2.getText().toString();
 
@@ -176,9 +175,9 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView) findViewById(R.id.optionOne)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer1());
                 ((TextView) findViewById(R.id.optionTwo)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer2());
 
-                findViewById(R.id.flashcard_answer).setBackgroundColor(getResources().getColor(R.color.regular));
-                findViewById(R.id.optionTwo).setBackgroundColor(getResources().getColor(R.color.regular));
-                findViewById(R.id.optionOne).setBackgroundColor(getResources().getColor(R.color.regular));
+                findViewById(R.id.flashcard_answer).setBackgroundResource(R.drawable.answer_background);
+                findViewById(R.id.optionTwo).setBackgroundResource(R.drawable.answer_background);
+                findViewById(R.id.optionOne).setBackgroundResource(R.drawable.answer_background);
 
 
                 leftOutAnim.setAnimationListener(new Animation.AnimationListener() {

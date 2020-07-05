@@ -67,7 +67,7 @@
         android:layout_width="96dp"
         android:layout_height="70dp"
         android:layout_below="@id/choiceTwo"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="23dp"
         android:layout_weight="1"
         android:src="@drawable/save" />
 
@@ -76,8 +76,8 @@
         android:layout_width="57dp"
         android:layout_height="62dp"
         android:layout_below="@id/choiceTwo"
-        android:layout_marginLeft="201dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginLeft="199dp"
+        android:layout_marginTop="36dp"
         android:layout_toRightOf="@id/save"
         android:src="@drawable/cancel" />
 </android.widget.RelativeLayout>
